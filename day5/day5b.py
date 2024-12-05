@@ -1,4 +1,6 @@
 import re
+from calendar import error
+
 
 def is_sorted(elements, order_array):
     for order_row in order_array:
@@ -10,7 +12,8 @@ def is_sorted(elements, order_array):
             continue
     return True
 
-def sort_row(row, order_array, errors_found = False):
+def sort_row(row, order_array):
+    errors_found = False
     for order_row in order_array:
         try:
             first_element_index = row.index(order_row[0])
@@ -21,7 +24,7 @@ def sort_row(row, order_array, errors_found = False):
         except:
             continue
     if errors_found:
-        return sort_row(row, order_array)
+        sort_row(row, order_array)
 
 def main():
     # Lee el contenido del archivo
